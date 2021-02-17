@@ -1,0 +1,10 @@
+
+<h3>product is: {{productId}}</h3>
+
+<button type="button" class="btn btn-primary" (click)="goTo('product',productId,'overview')"> Goto Overview</button>
+<button type="button" class="btn btn-primary" (click)="goTo('product',productId,'details')"> Goto Details</button>
+
+<router-outlet></router-outlet>
+
+
+<button type="button" class="btn btn-secondary" (click)="goback()"><i class="bi bi-arrow-left-circle-fill"></i>Got Back</button>

@@ -1,0 +1,6 @@
+<h2>All products:</h2>
+
+<div class="list-group">
+    <a [routerLink]="['/product',prod.id]" class="list-group-item list-group-item-action" *ngFor="let prod of products">{{prod.name}}</a>
+</div>
+<!-- <router-outlet></router-outlet> -->

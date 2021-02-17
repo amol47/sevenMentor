@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="row">
+    
+    <div class="com-md-6">
+      
+      <form (keydown.enter)="$event.preventDefault()" novalidate #studentData="ngForm" (ngSubmit)="saveStudentData(studentData.value,studentData)">
+        <fieldset>
+          <legend>Student Form</legend>
+          <div class="form-group">
+            <label for="firstname">first name</label>
+            <input type="text" class="form-control" #firstname="ngModel" name="firstname" id="firstname" aria-describedby="fname" [(ngModel)]="contact.firstname" required
+              placeholder="first name">
+            <p *ngIf="!firstname?.valid && (firstname?.dirty || firstname?.touched)"><small id="fname" class="text-danger form-text">please enter first name</small></p>
+          </div>
+          <div class="form-group">
+            <label for="lastname">last name</label>
+            <input type="text" class="form-control" #lastname="ngModel" name="lastname" id="lastname" aria-describedby="lname" [(ngModel)]="contact.lastname" required
+              placeholder="first name">
+           <p *ngIf="lastname.invalid && (lastname?.dirty ||lastname?.touched)"> <small id="lname" class="text-danger form-text">please enter last name</small></p>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" #email="ngModel" name="email" id="email" aria-describedby="email" [(ngModel)]="contact.email" required
+              placeholder="first name">
+            <p *ngIf="email.invalid && (email?.dirty ||email?.touched)"><small id="email" class="text-danger form-text">please enter email name</small></p>
+          </div>
+
+          <div class="form-check">
+            <input type="radio" class="form-check-input" checked="checked" name="gender" id="male" value="male" [(ngModel)]="contact.gender">
+            <label class="form-check-label" for="male">
+              Male
+            </label>
+          </div>
+          
+          <div class="form-check">
+            <input type="radio" class="form-check-input" name="gender" id="female" value="female" [(ngModel)]="contact.gender">
+            <label class="form-check-label">Female</label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" name="isMarried" id="isMarried" [(ngModel)]="contact.isMarried">
+              isMaaried
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="studentData.invalid">Submit</button>
+
+        </fieldset>
+      </form>
+    </div>
+    <div *ngIf="showtable; else elseBlock">
+
+    <div class="col-md-6">
+      <p class="text-center bold">student deatils data</p>
+      <table class="table table-hover table-info ">
+        <thead class="thead-hover">
+          <tr>
+            <th *ngFor="let key of keys">{{key}}</th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let stud of studentDetailsArr">
+              <td>{{stud.firstname}}</td>
+              <td>{{stud.lastname}}</td>
+              <td>{{stud.email}}</td>
+              <td>{{stud.gender}}</td>
+              <td>{{(stud.isMarried == true)?"yes":"No"}}</td>
+            </tr>
+          </tbody>
+      </table>
+      
+    </div>
+  </div>
+  <ng-template #elseBlock>
+    <h5>student data not present.</h5>
+  </ng-template>
+  
+</div>
+</div>
